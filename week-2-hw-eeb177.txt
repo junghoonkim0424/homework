@@ -1,0 +1,270 @@
+Question1.
+
+Rodentia
+Rodentia
+Rodentia
+Macroscelidea
+Rodentia
+
+Question2.
+
+There are 151 unique families.
+
+Abrocomidae
+Acrobatidae
+Ailuridae
+Anomaluridae
+Antilocapridae
+Aotidae
+Aplodontiidae
+Atelidae
+Balaenidae
+Balaenopteridae
+Bathyergidae
+Bovidae
+Bradypodidae
+Burramyidae
+Caenolestidae
+Callitrichidae
+Calomyscidae
+Camelidae
+Canidae
+Capromyidae
+Castoridae
+Caviidae
+Cebidae
+Cercopithecidae
+Cervidae
+Cheirogaleidae
+Chinchillidae
+Chrysochloridae
+Craseonycteridae
+Cricetidae
+Ctenodactylidae
+Ctenomyidae
+Cuniculidae
+Cyclopedidae
+Cynocephalidae
+Dasypodidae
+Dasyproctidae
+Dasyuridae
+Daubentoniidae
+Delphinidae
+Diatomyidae
+Didelphidae
+Dinomyidae
+Dipodidae
+Dugongidae
+Echimydae
+Echimyidae
+Elephantidae
+Emballonuridae
+Equidae
+Erethizontidae
+Erinaceidae
+Eschrichtiidae
+Eupleridae
+Felidae
+Furipteridae
+Galagidae
+Geomyidae
+Giraffidae
+Gliridae
+Herpestidae
+Heteromyidae
+Hippopotamidae
+Hipposideridae
+Hominidae
+Hyaenidae
+Hylobatidae
+Hypsiprymnodontidae
+Hystricidae
+Indriidae
+Iniidae
+Lemuridae
+Lepilemuridae
+Leporidae
+Lorisidae
+Macropodidae
+Macroscelididae
+Manidae
+Megadermatidae
+Megalonychidae
+Mephitidae
+Microbiotheriidae
+Molossidae
+Monodontidae
+Mormoopidae
+Moschidae
+Muridae
+Mustelidae
+Myocastoridae
+Myrmecobiidae
+Myrmecophagidae
+Mystacinidae
+Myzopodidae
+Nandiniidae
+Natalidae
+Neobalaenidae
+Nesomyidae
+Noctilionidae
+Notoryctidae
+Nycteridae
+Ochotonidae
+Octodontidae
+Odobenidae
+Ornithorhynchidae
+Orycteropodidae
+Otariidae
+Pedetidae
+Peramelidae
+Petauridae
+Petromuridae
+Phalangeridae
+Phascolarctidae
+Phocidae
+Phocoenidae
+Phyllostomidae
+Physeteridae
+Pitheciidae
+Platacanthomyidae
+Platanistidae
+Potoroidae
+Prionodontidae
+Procaviidae
+Procyonidae
+Pseudocheiridae
+Pteropodidae
+Ptilocercidae
+Rhinocerotidae
+Rhinolophidae
+Rhinopomatidae
+Sciuridae
+Solenodontidae
+Soricidae
+Spalacidae
+Suidae
+Tachyglossidae
+Talpidae
+Tapiridae
+Tarsiidae
+Tarsipedidae
+Tayassuidae
+Tenrecidae
+Thryonomyidae
+Thylacomyidae
+Thyropteridae
+Tragulidae
+Trichechidae
+Tupaiidae
+Ursidae
+Vespertilionidae
+Viverridae
+Vombatidae
+Ziphiidae
+
+
+Question3.
+first 5 lines. remove ';' between order and family by 'tr' command
+
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ head -n 5 Pacifici2013_data.csv | cut -d ';' -f 2-3 | tail -n+2 |tr -d ';'
+RodentiaCricetidae
+RodentiaCricetidae
+RodentiaCricetidae
+MacroscelideaMacroscelididae
+
+for 1.7.3 only
+
+Question4.
+
+10th largest.
+Cetartiodactyla Balaenidae Eubalaena Eubalaena glacialis 22999999.91
+
+
+10th smallest
+Chiroptera Vespertilionidae Pipistrellus Pipistrellus nanulus 2.51
+
+
+Question5.
+
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ wc -l BodyM.csv
+5426 BodyM.csv
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep Vombatidae BodyM.csv
+Diprotodontia Vombatidae Lasiorhinus Lasiorhinus krefftii 31849.99
+Diprotodontia Vombatidae Lasiorhinus Lasiorhinus latifrons 26163.8
+Diprotodontia Vombatidae Vombatus Vombatus ursinus 26000
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep -c Vombatidae BodyM.csv
+3
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep Bos BodyM.csv
+Cetartiodactyla Bovidae Bos Bos sauveli 791321.8
+Cetartiodactyla Bovidae Bos Bos gaurus 721000
+Cetartiodactyla Bovidae Bos Bos mutus 650000
+Cetartiodactyla Bovidae Bos Bos javanicus 635974.3
+Cetartiodactyla Bovidae Boselaphus Boselaphus tragocamelus 182253
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep -w Bos BodyM.csv
+Cetartiodactyla Bovidae Bos Bos sauveli 791321.8
+Cetartiodactyla Bovidae Bos Bos gaurus 721000
+Cetartiodactyla Bovidae Bos Bos mutus 650000
+Cetartiodactyla Bovidae Bos Bos javanicus 635974.3
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep -i Bos BodyM.csv
+Proboscidea Elephantidae Loxodonta Loxodonta africana 3824540
+Proboscidea Elephantidae Elephas Elephas maximus 3269794
+Cetartiodactyla Bovidae Bos Bos sauveli 791321.8
+Cetartiodactyla Bovidae Bos Bos gaurus 721000
+Cetartiodactyla Bovidae Bos Bos mutus 650000
+Cetartiodactyla Bovidae Bos Bos javanicus 635974.3
+Cetartiodactyla Bovidae Ovibos Ovibos moschatus 312500
+Cetartiodactyla Bovidae Boselaphus Boselaphus tragocamelus 182253
+Macroscelidea Macroscelididae Macroscelides Macroscelides proboscideus 38.64
+Rodentia Cricetidae Neacomys Neacomys dubosti 17.9566666667
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep -A 2 -B 2 "Gorilla gorilla" BodyM.csv
+Cetartiodactyla Bovidae Ovis Ovis ammon 113998.7
+Cetartiodactyla Delphinidae Lissodelphis Lissodelphis borealis 113000
+Primates Hominidae Gorilla Gorilla gorilla 112589
+Cetartiodactyla Cervidae Blastocerus Blastocerus dichotomus 112518.5
+Cetartiodactyla Iniidae Lipotes Lipotes vexillifer 112138.3
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep -n "Gorilla gorilla" BodyM.csv
+164:Primates Hominidae Gorilla Gorilla gorilla 112589
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep Gorilla BodyM.csv | grep -v gorilla
+Primates Hominidae Gorilla Gorilla beringei 149325.2
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep -w "Gorilla\|Pan" BodyM.csv
+Primates Hominidae Gorilla Gorilla beringei 149325.2
+Primates Hominidae Gorilla Gorilla gorilla 112589
+Primates Hominidae Pan Pan troglodytes 45000
+Primates Hominidae Pan Pan paniscus 35119.95
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ cd ..
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix$ grep -r "Gorilla" data/
+data/Pacifici2013_data.csv:39994;Primates;Hominidae;Gorilla;Gorilla beringei;149325.2;PanTHERIA;no information;no information;no information;no information;no information;no information;7300;GMA
+data/Pacifici2013_data.csv:9404;Primates;Hominidae;Gorilla;Gorilla gorilla;112589;PanTHERIA;19965.5;"PanTHERIA;AnAge";16315.5;3650;PanTHERIA;8381.495;8030;GMA
+data/BodyM.csv:Primates Hominidae Gorilla Gorilla beringei 149325.2
+data/BodyM.csv:Primates Hominidae Gorilla Gorilla gorilla 112589
+
+for 1.7.3 only.
+
+
+Question6.
+
+Question7.
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ for txt in *.txt
+> do
+> cp *.txt ~/Desktop/eeb-177/CSB/unix/sandbox/temp
+> done
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/sandbox/temp$ for txt in *.txt
+> do
+> mv $txt edited-$txt
+> done
+
+Question8.
+
+1)grep  -w "of" haiku.txt
+
+2)shell runs whatever in parentheses at first,  list all dat files in or below the current directory.
+and then -l runs to display lines in all of the files. After that,  sort -n runs as to sort with the numbers the lines that match.
+
+3) grep -v "temp" $(find /data -name '*ose.dat') 
+
+4)man?
+
+5)
+
+6)man?
