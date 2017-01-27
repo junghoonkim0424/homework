@@ -238,11 +238,28 @@ data/Pacifici2013_data.csv:39994;Primates;Hominidae;Gorilla;Gorilla beringei;149
 data/Pacifici2013_data.csv:9404;Primates;Hominidae;Gorilla;Gorilla gorilla;112589;PanTHERIA;19965.5;"PanTHERIA;AnAge";16315.5;3650;PanTHERIA;8381.495;8030;GMA
 data/BodyM.csv:Primates Hominidae Gorilla Gorilla beringei 149325.2
 data/BodyM.csv:Primates Hominidae Gorilla Gorilla gorilla 112589
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ grep -w "Gorilla\|Pan" BodyM.csv
+Primates Hominidae Gorilla Gorilla beringei 149325.2
+Primates Hominidae Gorilla Gorilla gorilla 112589
+Primates Hominidae Pan Pan troglodytes 45000
+Primates Hominidae Pan Pan paniscus 35119.95
 
-for 1.7.3 only.
+for 1.7.4 only.
 
 
 Question6.
+
+2.)566026 Marra2014_data.fasta
+
+4.)eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/sandbox$ grep -c isogroup00036 my_file.fasta
+16
+
+6)eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/sandbox$ grep isogroup my_file.fasta |tr -s ' ' ','| cut -d ',' -f 4| uniq
+43.
+
+7)>contig00302,numreads 3330
+
+
 
 Question7.
 eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ for txt in *.txt
@@ -261,10 +278,25 @@ Question8.
 2)shell runs whatever in parentheses at first,  list all dat files in or below the current directory.
 and then -l runs to display lines in all of the files. After that,  sort -n runs as to sort with the numbers the lines that match.
 
-3) grep -v "temp" $(find /data -name '*ose.dat') 
+3) answer:1.
 
-4)man?
+4)eeb177-student@eeb177-VirtualBox:~/Desktop$ grep -w $1 -r $2 species.txt | cut -d , -f 1,3  > $1.txt 
 
-5)
+5)eeb177-student@eeb177-VirtualBox:~/Desktop$ for name in Amy Jo Meg Beth; do grep -o $name LittleWomen.txt |wc -w >>tabulator.txt | echo $name >> tabulator.txt
+> done
 
-6)man?
+data in Tabulator.txt looks like,
+
+Amy
+11
+Jo
+4
+Meg
+4
+Beth
+4
+
+Name of sister and its number of mentioned name in LittleWomen.txt file is put right below the name.
+and three other names in the same way.
+
+6) $ find ./ -type f -mtime -1 -user ahmed
