@@ -1,0 +1,56 @@
+Question 1.
+1.eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ tail -n+2 Gesquiere2011_data.csv | tr "\t" ","|cut -d ',' -f 1|grep -w 3| wc -l
+61
+
+eeb177-student@eeb177-VirtualBox:~/Desktop/eeb-177/CSB/unix/data$ tail -n+2 Gesquiere2011_data.csv | tr "\t" ","|cut -d ',' -f 1|grep -w 27| wc -l
+5
+
+Individual 3 , 61 times.
+
+Individual 27, 5 times.
+
+2.
+#! /bin/bash
+
+cut -f 1 $1 | grep -c -w $2
+
+
+3.
+#! /bin/bash
+
+id = 'tail -n+2 Gesquiere2011_data.csv|cut -f 1| sort -n | uniq'
+for thisid in $id
+do	
+	$result='bash search.sh Gesquiere2011_data.csv $thisid'
+	echo "result is $result"
+done	
+
+
+Question 2.
+1.
+#! /bin/bash
+
+echo "file name"
+echo $1
+echo "number of rows:"
+cat $1| wc -l
+echo "Number of columns"
+head -n 1 $1|tr -d ' '|tr -d '\n'|wc -m
+
+2.
+#! /bin/bash
+
+file=~/Desktop/eeb-177/CSB/unix/data/saavedra2013/*.txt
+
+for filename in $file
+do
+	row='cat $filename | wc -l'
+	column='head -n 1 $filename |tr -d ' '|tr -d '\n'|wc -m'
+	echo $row $column
+done
+
+3.
+
+n58.txt has 678 rows
+
+n56.txt has 207 columns
