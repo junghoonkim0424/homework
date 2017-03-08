@@ -1,0 +1,221 @@
+---
+title: "r-week-8-hw-eeb177"
+output: html_document
+---
+#1. Canids Continued
+```{r}
+setwd("~/Desktop/eeb-177/homework")
+canids <- read.csv("canids-ranges.csv", header = F, as.is = T)
+names(canids) <- c("genus", "species", "minage", "maxage")
+head(canids)
+
+canid_occ <- ggplot(canids, aes( species, ymin = maxage, ymax=minage, colour = genus))
+canid_occ <- canid_occ + geom_linerange()
+canid_occ
+
+canid_occ <- canid_occ + theme(legend.position="none")
+canid_occ
+
+canid_occ <- canid_occ + coord_flip()
+canid_occ
+
+canid_occ <- canid_occ +  theme(axis.text.y = element_text(size=3))
+canid_occ
+
+canid_occ <- canid_occ + labs(title = "Canid Fossil Occurrences", x = "Species", y = "Ma ago") + theme(plot.title = element_text(hjust = 0.5, size=22, face = "bold"), axis.title =element_text(size=20))
+canid_occ
+```
+
+#Answering question. First.
+#1. What taxonomic group is displayed? 
+  
+    canids
+#2. How many unique fossil species are contained within it?
+   #length(canids$species)
+   
+171
+
+#3. How many unique fossil genera?
+   #nrow(canids[!duplicated(canids$genus), ])
+58
+
+
+#4. What species has the longest
+Cormocyon,Cormocyon copei
+
+
+#Answering question. Second part with Blattodea data file.
+```{r}
+library(ggplot2)
+setwd("~/Desktop/eeb-177/homework") 
+Blattodea <- read.csv("Blattodea-ranges.csv", header = F, as.is = T)
+names(Blattodea) <- c("genus", "species", "minage", "maxage")
+head(Blattodea)
+
+Blattodea_occ <- ggplot(Blattodea, aes( species, ymin = maxage, ymax=minage, colour = genus))
+Blattodea_occ <- Blattodea_occ + geom_linerange()
+Blattodea_occ
+
+Blattodea_occ <- Blattodea_occ + theme(legend.position="none")
+Blattodea_occ
+Blattodea_occ <- Blattodea_occ + coord_flip()
+Blattodea_occ
+
+Blattodea_occ <- Blattodea_occ + labs(title = "Canid Fossil Occurrences", x = "Species", y = "Ma ago") + theme(plot.title = element_text(hjust = 0.5, size=22, face = "bold"), axis.title =element_text(size=20))
+Blattodea_occ
+```
+
+#1. What taxonomic group is displayed? 
+      Blattodea.
+#2. How many unique fossil species are contained within it?
+      1430
+#3. How many unique fossil genera?
+      490
+#4. What species has the longest
+    Blattodea
+
+
+
+
+#Part 2. Data Frames
+#Exploring Data frames
+#1
+```{r}
+df <- data.frame(first = c('Jung'),
+                 last = c('Kim'),
+                 lucky_number = c(4),
+                 stringsAsFactors = FALSE)
+df <- rbind(df, list('Joe', 'Bruin', 7) )
+df <- cbind(df, coffeetime = c(TRUE,FALSE))
+df
+```
+
+#2
+```{r}
+download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
+gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv")
+
+source(file = "scripts/load-gapminder.R")
+```
+
+#3
+```{r}
+The object gapminder is a data frame with columns
+
+    country and continent are factors.
+    year is an integer vector.
+    pop, lifeExp, and gdpPercap are numeric vectors.
+
+```
+
+
+#Subsetting Data.
+#1.
+```{r}
+x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+names(x) <- c('a', 'b', 'c', 'd', 'e')
+x<- x[-c(1,5)]
+print(x)
+```
+
+#2
+```{r}
+x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+names(x) <- c('a', 'b', 'c', 'd', 'e')
+print(x)
+x[-which(names(x) == "g")]
+#answer is A) if there are no TRUE values passed to which, an empty vector is returned and C) integer() is an empty vector.
+```
+
+#3
+```{r}
+x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+names(x) <- c('a', 'b', 'c', 'd', 'e')
+print(x)
+
+subsetting <- x[x<7 & x >4]
+
+print(subsetting)
+
+```
+
+#4
+```{r}
+m <- matrix(1:18, nrow=3, ncol=6)
+m[2,c(4,5)]
+
+# Answer:D. m[2,c(4,5)]
+```
+
+#5
+```{r}
+xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
+xlist$b[2]
+```
+
+#6
+```{r}
+mod <- aov(pop ~ lifeExp, data=gapminder)
+attributes(mod) ## `df.residual` is one of the names of `mod`
+mod$df.residual
+```
+
+#7
+```{r}
+#1)gapminder[gapminder$year == 1957,]
+
+#2)gapminder[,-c(1:4)]
+
+#3)gapminder[gapminder$lifeExp > 80,]
+
+#4)gapminder[1, c(4, 5)]
+
+#5)gapminder[gapminder$year == 2002 | gapminder$year == 2007,] #gapminder[gapminder$year %in% c(2002, 2007),]
+```
+
+#8
+```{r}
+#1. gapminder is a data.frame so needs to be subsetted on two dimensions. gapminder[1:20, ] subsets the data to give the first 20 rows and all columns.
+#2. gapminder_small <- gapminder[c(1:9, 19:23),]
+```
+
+#Creating Publication-Quality Graphics
+
+#1
+```{r}
+gapminder <- read.csv("gapminder-FiveYearData.csv")
+#ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
+ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
+```
+
+#2
+```{r}
+gapminder <- read.csv("gapminder-FiveYearData.csv")
+ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
+  geom_point()
+```
+
+#3
+```{r}
+ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
+ geom_point() + geom_line(aes(color=continent))
+```
+
+#4
+```{r}
+#4a.
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+ geom_point(size=3, color="orange") + scale_x_log10() +
+ geom_smooth(method="lm", size=1.5)
+
+#4b.
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+geom_point(size=3, pch=17) + scale_x_log10() +
+geom_smooth(method="lm", size=1.5)
+```
+
+#5
+```{r}
+ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
+ geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
+```
