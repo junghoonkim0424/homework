@@ -1,0 +1,43 @@
+1.Absoute vs Relative Paths.
+
+Answer: 5. cd ~   7. cd ~/data/..  8. cd   9. cd ..
+
+Because ~ command stands for the user's home directory as /Users/amanda
+
+cd .. command function as going back to the previous directory.
+
+cd command functions that go to user's home directoy.
+
+cd ~/data/.. functions as same as cd ..
+
+
+2.Relative Path Resolution.
+
+ls ../backup, then currently user is on the thing directory.
+
+.. commands direct it to upper level of directiory, so it directs to
+
+Users. After that move to backup directory as /backup, and then
+
+it displays subdirectories in the back up.
+
+Therefore, answer is 4: "origianl pnas_final pnas_sub"  
+
+
+3. ls Reading Comprehension.
+
+Answer is 2,3, and 4. but not 1. because ls pwd command doesn't show
+the name of a directory, but only showing User's current directory.
+Every other commands show three subdirectories of 'backup'.
+ 
+4. Exploring More ls Arguments
+The -l arguments makes ls use a long listing format, showing not only the file/directory names but also additional information such as the file size and the time of its last modification.
+
+The -h argument makes the file size “human readable”.
+
+5.Listing Recursively and By Time
+
+The directories are listed alphabetical at each level, the files/directories in each directory are sorted by time of last change.
+
+
+
